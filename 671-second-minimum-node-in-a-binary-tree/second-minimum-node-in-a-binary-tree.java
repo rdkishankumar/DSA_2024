@@ -29,9 +29,7 @@ public class Solution {
         int rightVal = findSecondMinimumValue(node.right, rootVal);
         
         // If both sides have valid values, return the smaller of the two
-        if (leftVal != -1 && rightVal != -1) {
-            return Math.min(leftVal, rightVal);
-        }
+        if (leftVal != -1 && rightVal != -1) return Math.min(leftVal, rightVal);
         
         // If only one side has a valid value, return that value
         return (leftVal != -1) ? leftVal : rightVal;
