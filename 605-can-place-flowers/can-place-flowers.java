@@ -19,6 +19,6 @@ class Solution {
             }
         }
         // If there are still flowers left to plant, return false
-        return n <= 0;
+        return n<=0;
     }
 }
