@@ -9,8 +9,11 @@ class Solution {
             if(s[cookieIndex]>=g[childIndex]){
                 count++;
                 childIndex++;
+                cookieIndex++;
+            }else{
+                cookieIndex++;
             }
-            cookieIndex++;
+            
         }
         return count;  
     }
