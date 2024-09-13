@@ -1,32 +1,32 @@
 class Solution {
     public boolean lemonadeChange(int[] bills) {
-        Map<Integer, Integer> trackOfEx = new HashMap<>();
-        trackOfEx.put(5, 0);
-        trackOfEx.put(10, 0);
-        trackOfEx.put(20, 0);
-        
-        for (int bill : bills) {
-            if (bill == 5) {
-                trackOfEx.put(5, trackOfEx.get(5) + 1);
-            } else if (bill == 10) {
-                if (trackOfEx.get(5) > 0) {
-                    trackOfEx.put(5, trackOfEx.get(5) - 1);
-                    trackOfEx.put(10, trackOfEx.get(10) + 1);
-                } else {
+        int coinOf5 = 0;
+        int coinOf10 = 0;
+        for(int bill: bills){
+            if(bill == 5)
+            coinOf5++;
+            else if(bill == 10){
+                if(coinOf5>0){
+                    coinOf10++;
+                coinOf5--;
+
+                }else{
                     return false;
                 }
-            } else if (bill == 20) {
-                if (trackOfEx.get(10) > 0 && trackOfEx.get(5) > 0) {
-                    trackOfEx.put(10, trackOfEx.get(10) - 1);
-                    trackOfEx.put(5, trackOfEx.get(5) - 1);
-                } else if (trackOfEx.get(5) >= 3) {
-                    trackOfEx.put(5, trackOfEx.get(5) - 3);
-                } else {
-                    return false;
+            }else{
+                if(coinOf10>0 && coinOf5>0){
+                    coinOf10--;
+                    coinOf5--;
+                }else{
+                    if(coinOf5>=3){
+                       coinOf5-=3; 
+                    }else{
+                        return false;
+                    }
                 }
             }
+
         }
-        
-        return true;
+        return true; 
     }
 }
